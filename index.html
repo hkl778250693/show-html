@@ -33,30 +33,29 @@
     <!--        }-->
     <!--    }-->
     <!--</script>-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // 获取音乐元素
-            var music = document.getElementById('music');
 
-            // 获取页面内容区域，并添加点击事件监听器
-            var clickArea = document.getElementById('clickArea');
-            clickArea.addEventListener('click', function () {
-                // 播放音乐
-                if (music.paused) {
-                    music.play();
-                }
-            });
-        });
-    </script>
 </head>
 <body>
-<!-- 音频播放器 -->
-<audio preload autoplay loop id="music">
-    <source src="bg.mp3" type="audio/mpeg">
-</audio>
-<!-- 页面内容 -->
-<div id="clickArea" style="width: 100%; height: 100vh; position: relative;">
-</div>
+
+<!--<script>-->
+<!--    -->
+
+<!--    //         document.addEventListener('DOMContentLoaded', function () {-->
+<!--    //             // 获取音乐元素-->
+<!--    //             var music = document.getElementById('music');-->
+<!--    // console.log(music.paused);-->
+<!--    // console.log(document.getElementById('clickArea'));-->
+<!--    //             // 获取页面内容区域，并添加点击事件监听器-->
+<!--    //             var clickArea = document.getElementById('clickArea');-->
+<!--    //             clickArea.addEventListener('click', function () {-->
+<!--    //                 console.log(music.paused);-->
+<!--    //                 // 播放音乐-->
+<!--    //                 if (music.paused) {-->
+<!--    //                     music.play();-->
+<!--    //                 }-->
+<!--    //             });-->
+<!--    //         });-->
+<!--</script>-->
 <canvas id="snowCanvas"></canvas>
 <script>
     const canvas = document.getElementById('snowCanvas');
@@ -226,7 +225,32 @@
     initSnowflakes();
     animate();
 </script>
+<!-- 音频播放器 -->
+<audio preload autoplay loop id="music">
+    <source src="bg.mp3" type="audio/mpeg">
+</audio>
+<!-- 页面内容 -->
+<div id="clickArea"
+     style="width: 100%; height: 100vh; position: relative; display: flex; justify-content: center; align-items: center;">
+</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var clickArea = document.getElementById('clickArea');
+        if (!clickArea) {
+            console.error('无法找到元素：clickArea');
+            return;
+        }
+        clickArea.addEventListener('click', function () {
+            var music = document.getElementById('music');
+            // console.log(music.paused);
+            // console.log(document.getElementById('clickArea'));
+            if (music.paused) {
+                music.play();
+            }
+        });
+    });
+</script>
 <!--<a href="music.html">音乐</a>-->
 
 </body>
