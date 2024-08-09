@@ -19,19 +19,20 @@
             height: 100%;
         }
     </style>
-    <script type="text/javascript">
-    window.onload = function () {
-        setInterval("toggleSound()", 1);
-    }
+<!--    <script type="text/javascript">-->
+<!--        window.onload = function () {-->
+<!--            setInterval(toggleSound, 2000);-->
+<!--        }-->
 
-    function toggleSound() {
-        var music = document.getElementById("music");//获取ID
-        if (music.paused) { //判读是否播放
-            music.paused = false;
-            music.play(); //没有就播放
-        }
-    }
-</script>
+<!--        function toggleSound() {-->
+<!--            var music = document.getElementById("music");//获取ID-->
+<!--            console.log(music.paused);-->
+<!--            if (music.paused) { //判读是否播放-->
+<!--                music.paused = false;-->
+<!--                music.play(); //没有就播放-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
 </head>
 <body>
 <canvas id="snowCanvas"></canvas>
@@ -203,9 +204,11 @@
     initSnowflakes();
     animate();
 </script>
+
+<a href="music.html"></a>
 <!-- 音频播放器 -->
-<audio preload autoplay loop id="music">
-    <source src="bg.mp3" type="audio/mpeg">
-</audio>
+<!--<audio preload autoplay loop id="music">-->
+<!--    <source src="bg.mp3" type="audio/mpeg">-->
+<!--</audio>-->
 </body>
 </html>
