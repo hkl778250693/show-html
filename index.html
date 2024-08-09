@@ -22,6 +22,36 @@
 </head>
 <body>
 <canvas id="snowCanvas"></canvas>
+<!-- 音频播放器 -->
+<audio id="bgMusic" loop autoplay>
+    <source src="bg.mp3" type="audio/mpeg">
+    您的浏览器不支持音频播放。
+</audio>
+
+<!-- 页面内容 -->
+<h1>欢迎来到我的网站</h1>
+<p>这里可以添加您的网页内容。</p>
+
+<!-- 脚本 -->
+<script>
+    // 获取音频元素
+    var audio = document.getElementById('bgMusic');
+
+    // 检查浏览器是否支持音频 autoplay 属性
+    if (audio && !audio.paused) {
+        // 如果不支持 autoplay，可以手动播放
+        audio.play();
+    } else {
+        // 如果不支持自动播放，可以添加一个按钮让用户点击播放
+        var playButton = document.getElementById('playButton');
+        playButton.addEventListener('click', function () {
+            audio.play();
+        });
+    }
+</script>
+
+<!-- 可选：播放按钮 -->
+<button id="playButton">播放音乐</button>
 <script>
     const canvas = document.getElementById('snowCanvas');
     const ctx = canvas.getContext('2d');
@@ -71,55 +101,61 @@
 
     // 文本消息数组
     const textMessages = [
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
-        {content: '七夕快乐', size: Math.random() * 50 + 20},
-        {content: 'I love you', size: Math.random() * 40 + 20},
-        {content: '我喜欢你', size: Math.random() * 30 + 20},
-        {content: '张琦', size: Math.random() * 30 + 20},
-        {content: '大幺幺', size: Math.random() * 30 + 20},
-        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
-        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '你的出现就像一束光', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '你的出现就像一束光', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '你的出现就像一束光', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '你的出现就像一束光', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '你的出现就像一束光', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '七夕快乐', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: 'I love you', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '我喜欢你', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '77妹儿', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '大幺幺', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '你的出现就像一束光', size: Math.random() * Math.floor(Math.random() * 50) + 20},
+        {content: '爱你么么哒', size: Math.random() * Math.floor(Math.random() * 50) + 20},
     ];
 
     // 更新文本位置
