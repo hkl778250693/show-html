@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕节动画效果</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #000; /* 深色背景 */
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="snowCanvas"></canvas>
+<script>
+    const canvas = document.getElementById('snowCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    // 雪花数组
+    const snowflakes = [];
+    const snowflakeCount = 100; // 雪花数量
+
+    // 初始化雪花
+    function initSnowflakes() {
+        for (let i = 0; i < snowflakeCount; i++) {
+            snowflakes.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 5 + 1, // 雪花大小
+                speed: Math.random() * 2 + 1, // 飘落速度
+                dx: (Math.random() - 0.5) * 0.5, // 左右摇摆速度
+            });
+        }
+    }
+
+    // 更新雪花位置
+    function updateSnowflakes() {
+        snowflakes.forEach(snowflake => {
+            snowflake.y += snowflake.speed; // 飘落
+            snowflake.x += snowflake.dx; // 左右摇摆
+
+            // 重置雪花位置，使其循环
+            if (snowflake.y > height + snowflake.size) {
+                snowflake.y = -snowflake.size;
+                snowflake.x = Math.random() * width;
+                snowflake.dx = (Math.random() - 0.5) * 0.5;
+            }
+        });
+    }
+
+    // 绘制单个雪花
+    function drawSnowflake(snowflake) {
+        ctx.beginPath();
+        ctx.arc(snowflake.x, snowflake.y, snowflake.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // 文本消息数组
+    const textMessages = [
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+        {content: '七夕快乐', size: Math.random() * 50 + 20},
+        {content: 'I love you', size: Math.random() * 40 + 20},
+        {content: '我喜欢你', size: Math.random() * 30 + 20},
+        {content: '张琦', size: Math.random() * 30 + 20},
+        {content: '大幺幺', size: Math.random() * 30 + 20},
+        {content: '遇见你祯的很开心', size: Math.random() * 30 + 20},
+        {content: '你的出现就像一束光', size: Math.random() * 30 + 20},
+    ];
+
+    // 更新文本位置
+    function updateTexts() {
+        texts.forEach(text => {
+            text.y -= text.speed; // 向上移动
+        });
+    }
+
+    // 绘制文本
+    function drawTexts() {
+        ctx.fillStyle = 'pink';
+        texts.forEach(text => {
+            ctx.font = `bold ${text.size}px Arial`;
+            ctx.fillText(text.content, width / 2 - ctx.measureText(text.content).width / 2, text.y);
+        });
+    }
+
+
+    // 文字状态数组
+    const texts = textMessages.map(message => {
+        return {
+            content: message.content,
+            size: message.size,
+            x: Math.random() * (width - ctx.measureText(message.content).width),
+            y: Math.random() * height,
+            speed: Math.random() * 5 + 1, // 随机速度
+            acceleration: 0.0005, // 加速度，用于减速效果
+            reset: false
+        };
+    });
+
+
+    // 动画循环
+    function animate() {
+        ctx.clearRect(0, 0, width, height); // 清除画布
+        updateSnowflakes(); // 更新雪花位置
+        snowflakes.forEach(snowflake => {
+            drawSnowflake(snowflake); // 绘制雪花
+        });
+        // updateTexts(); // 更新文本位置
+        // drawTexts(); // 绘制文本
+        texts.forEach(text => {
+            if (!text.reset) {
+                ctx.fillStyle = 'pink';
+                ctx.font = `bold ${text.size}px Arial`;
+                ctx.fillText(text.content, text.x, text.y);
+                text.y -= text.speed;
+
+                if (text.y < -text.size) {
+                    text.reset = true;
+                }
+            } else {
+                text.y = height + text.size;
+                text.x = Math.random() * (width - ctx.measureText(text.content).width);
+                text.reset = false;
+            }
+        });
+        requestAnimationFrame(animate);
+    }
+
+    initSnowflakes();
+    animate();
+</script>
+</body>
+</html>
